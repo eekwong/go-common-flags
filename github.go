@@ -22,7 +22,6 @@ func NewDefaultGitHubOpts() *GitHubOpts {
 	}
 }
 
-// GetGitHubOpts parses the cobra.Command and returns the GitHubOpts.
 func GetGitHubOpts(c *cli.Context) *GitHubOpts {
 	return &GitHubOpts{
 		Host: c.String(githubHost),
@@ -30,7 +29,6 @@ func GetGitHubOpts(c *cli.Context) *GitHubOpts {
 	}
 }
 
-// AddGitHubFlags adds the GitHub-specific command line arguments to the cobra.Command.
 func AddGitHubFlags(flags *[]cli.Flag) {
 	defaultOpts := NewDefaultGitHubOpts()
 	*flags = append(*flags, &cli.StringFlag{

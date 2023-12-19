@@ -14,7 +14,6 @@ const (
 	postgresDBName   = "psql-dbname"
 )
 
-// PostgresOpts is the options for accessing PostgreSQL
 type PostgresOpts struct {
 	PostgresHost     string
 	PostgresPort     int
@@ -23,7 +22,6 @@ type PostgresOpts struct {
 	PostgresDBName   string
 }
 
-// NewDefaultPostgresOpts returns a new PostgresOpts with default values
 func NewDefaultPostgresOpts() *PostgresOpts {
 	return &PostgresOpts{
 		PostgresHost:     "localhost",
@@ -34,7 +32,6 @@ func NewDefaultPostgresOpts() *PostgresOpts {
 	}
 }
 
-// GetPostgresOpts parses the cobra.Command and returns the PostgresOpts.
 func GetPostgresOpts(c *cli.Context) *PostgresOpts {
 	return &PostgresOpts{
 		PostgresHost:     c.String(postgresHost),
@@ -64,7 +61,6 @@ func (p *PostgresOpts) ConnectionStringWithoutDBName() string {
 	)
 }
 
-// AddPostgresFlags adds the Postgres-specific command line arguments to the cobra.Command.
 func AddPostgresFlags(flags *[]cli.Flag) {
 	defaultOpts := NewDefaultPostgresOpts()
 	*flags = append(*flags, &cli.StringFlag{
